@@ -6,7 +6,8 @@ export default function Layout({ children, dark, toggleTheme }) {
   const location = useLocation();
 
   return (
-    <div className="flex bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900
+                    text-gray-900 dark:text-gray-100">
       <Sidebar dark={dark} toggleTheme={toggleTheme} />
 
       <motion.main

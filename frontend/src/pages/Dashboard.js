@@ -47,8 +47,9 @@ export default function Dashboard() {
     return <p className="text-gray-500">Loading today’s habits...</p>;
   }
 
-  return (
-    <div>
+ return (
+  <div className="text-gray-900 dark:text-gray-100">
+
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
         Today – {today}
       </h1>

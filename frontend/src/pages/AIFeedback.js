@@ -10,27 +10,35 @@ export default function AIFeedback() {
     axios.get(API).then(res => setData(res.data));
   }, []);
 
-  if (!data) return <p>Loading AI feedback...</p>;
+  if (!data) {
+    return (
+      <div className="text-gray-900 dark:text-gray-100">
+        Loading AI feedback...
+      </div>
+    );
+  }
 
   if (data.message) {
-    return <p className="text-gray-600">{data.message}</p>;
+    return (
+      <div className="text-gray-900 dark:text-gray-100">
+        {data.message}
+      </div>
+    );
   }
 
   return (
-    <div>
+    <div className="text-gray-900 dark:text-gray-100">
       <h1 className="text-2xl font-bold mb-6">
         AI Habit Feedback 🤖
       </h1>
 
-      <div className="bg-white p-6 rounded-xl shadow space-y-4">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow space-y-4">
         <p>
-          <strong>Today ({data.today}):</strong>{" "}
-          {data.todayScore} habits completed
+          <strong>Today:</strong> {data.todayScore} habits completed
         </p>
 
         <p>
-          <strong>Yesterday ({data.yesterday}):</strong>{" "}
-          {data.yesterdayScore} habits completed
+          <strong>Yesterday:</strong> {data.yesterdayScore} habits completed
         </p>
 
         <p>
@@ -40,9 +48,11 @@ export default function AIFeedback() {
           {data.comparison === "same" && "➖ Same as yesterday"}
         </p>
 
-        <div className="bg-indigo-50 p-4 rounded-lg">
+        <div className="bg-indigo-100 dark:bg-indigo-900 p-4 rounded-lg">
           <strong>Suggestion:</strong>
-          <p className="mt-1">{data.suggestion}</p>
+          <p className="mt-1">
+            {data.suggestion}
+          </p>
         </div>
       </div>
     </div>
