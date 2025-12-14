@@ -1,10 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
+import {
+  CalendarDays,
+  History,
+  BarChart3,
+  Brain,
+  Moon,
+  Sun,
+} from "lucide-react";
 
 export default function Sidebar({ dark, toggleTheme }) {
   const location = useLocation();
 
   const link = (path) =>
-    `block px-4 py-2 rounded-lg mb-2 transition ${
+    `flex items-center gap-3 px-4 py-2 rounded-lg mb-2 transition ${
       location.pathname === path
         ? "bg-indigo-600 text-white"
         : "hover:bg-gray-200 dark:hover:bg-gray-700"
@@ -16,18 +24,29 @@ export default function Sidebar({ dark, toggleTheme }) {
         Habit Tracker
       </h1>
 
-      <Link to="/" className={link("/")}>📅 Today</Link>
-      <Link to="/history" className={link("/history")}>📜 History</Link>
-      <Link to="/analytics" className={link("/analytics")}>📊 Analytics</Link>
-      <Link to="/ai" className={link("/ai")}>🤖 AI Feedback</Link>
+      <Link to="/" className={link("/")}>
+        <CalendarDays size={18} /> Today
+      </Link>
 
-      {/* Dark mode toggle */}
+      <Link to="/history" className={link("/history")}>
+        <History size={18} /> History
+      </Link>
+
+      <Link to="/analytics" className={link("/analytics")}>
+        <BarChart3 size={18} /> Analytics
+      </Link>
+
+      <Link to="/ai" className={link("/ai")}>
+        <Brain size={18} /> AI Feedback
+      </Link>
+
       <div className="mt-8">
         <button
           onClick={toggleTheme}
-          className="w-full px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700"
+          className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700"
         >
-          {dark ? "☀ Light Mode" : "🌙 Dark Mode"}
+          {dark ? <Sun size={18} /> : <Moon size={18} />}
+          {dark ? "Light Mode" : "Dark Mode"}
         </button>
       </div>
     </div>

@@ -1,10 +1,14 @@
 import Sidebar from "./Sidebar";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 export default function Layout({ children, dark, toggleTheme }) {
+  const location = useLocation();
+
   return (
     <div className="flex bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
       <Sidebar dark={dark} toggleTheme={toggleTheme} />
+
       <motion.main
         key={location.pathname}
         initial={{ opacity: 0 }}
